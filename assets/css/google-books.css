@@ -1,0 +1,92 @@
+/* google-books.css — estilos específicos para la página add_from_google.php
+   Mantiene la estética del sitio y evita las reglas especiales de .reports-grid
+*/
+
+/* Contenedor de resultados: cuadrícula responsiva */
+#gb-results.gb-results-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* Cada tarjeta dentro del contenedor usa el look general (.card) pero
+   ajustamos padding/alto y comportamiento interno para miniatura + cuerpo */
+#gb-results.gb-results-grid .card{
+  display: block;           /* permitir que .card ocupe la celda completa */
+  padding: 18px;
+  border-radius: 10px;
+  min-height: 120px;
+}
+
+/* Row interna: imagen + contenido */
+#gb-results.gb-results-grid .card > div{ display:flex; gap:12px; align-items:flex-start; }
+
+/* Miniatura */
+#gb-results .card img{
+  width:72px; height:100px; object-fit:cover; border-radius:6px; display:block;
+}
+#gb-results .empty-icon{ width:72px; height:100px; display:grid; place-items:center; background:var(--bg-table-row); color:var(--text-muted); border-radius:6px; }
+
+/* Título y metadatos */
+#gb-results .book-title{ font-size:1.3rem; margin:0 0 6px 0; }
+#gb-results .text-muted{ margin-bottom:8px; }
+
+/* Botón agregar: mantener tamaño cómodo */
+#gb-results .btn{ padding:10px 18px; border-radius:999px; }
+
+/* Responsive: en pantallas pequeñas usar una columna */
+@media (max-width: 640px){
+  #gb-results.gb-results-grid{ grid-template-columns: 1fr; }
+}
+
+
+/* === GOOGLE BOOKS: barra + botones iguales (override final) === */
+
+/* Barra centrada y más larga */
+.search-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:16px auto 20px;
+  width:min(960px, 100%);
+  padding:4px;
+}
+
+/* Input con alto fijo para alinear con botones */
+.search-bar input[type="search"],
+.search-bar input[type="text"]{
+  flex:1;
+  min-width:0;
+  height:44px;               /* ← mismo alto que los botones */
+  padding:0 14px;
+  border-radius: var(--radius-sm);
+  border:1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Botones iguales en tamaño y tipografía */
+.search-bar .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:44px;               /* ← alto idéntico al input */
+  padding:0 20px;            /* ← sin cambiar altura */
+  min-width:170px;           /* ← mismo ancho visual para ambos */
+  font-size:1rem;
+  font-weight:800;
+  border-radius:999px;
+  box-sizing:border-box;
+}
+
+/* Forzar que ambos (primary/secondary) tengan mismo box model */
+.search-bar .btn-primary,
+.search-bar .btn-secondary{
+  line-height:1;             /* evita crecer por tipografía */
+  border-width:1px;
+}
+
+/* Responsive: en móvil apila*

@@ -1,0 +1,74 @@
+
+:root{ --login-width: 420px; }
+
+/* Layout centrado */
+body{
+  min-height:100vh; margin:0;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, #3A281D, #2a1b13);
+  font-family: var(--body-font, system-ui, -apple-system, Segoe UI, Roboto, sans-serif);
+}
+
+.login-card{
+  width:100%; max-width: var(--login-width);
+  background: var(--bg-secondary);
+  border:1px solid var(--border);
+  border-radius: 12px;
+  padding:24px 22px;
+  box-shadow: var(--shadow-md);
+}
+
+.login-title{
+  display:flex; align-items:center; gap:10px;
+  margin: 2px 0 18px 0;
+}
+.login-title .ico{ font-size: 1.4rem; filter: saturate(.95); }
+.login-title h2{
+  margin:0; font-family: var(--heading-font); font-size: 1.8rem;
+  color: var(--primary-light); letter-spacing:.2px;
+}
+
+/* Mensajes y alertas compactas */
+.alert{ margin:0 0 12px 0; padding:10px 12px; border-radius: 8px;
+  border:1px solid var(--danger); background: rgba(210,122,110,.14);
+  color: var(--text-primary); font-weight:600; font-size:.95em;
+}
+
+.field{ display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+.field input{
+  width:100%; padding:12px 14px; border-radius: 8px; border:1px solid var(--border);
+  background: var(--bg-table-row); color: var(--text-primary); font-size:1rem;
+}
+.field input::placeholder{ color: var(--text-muted); }
+.field input:focus{ outline: 2px solid rgba(0,0,0,0); box-shadow: 0 0 0 3px rgba(211,128,52,0.12); border-color: var(--primary-light); }
+
+.btn-primary{
+  width:100%; padding:12px 18px; border-radius:999px; border:1px solid var(--primary-light);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color:#2B1B12;
+  font-weight:800; font-size:1.05rem; cursor:pointer; transition: all .25s ease;
+}
+.btn-primary:hover{ background: linear-gradient(135deg, var(--primary-light), var(--primary)); box-shadow: 0 4px 10px rgba(0,0,0,.25); color:#fff; }
+.btn-primary:disabled{ opacity:.65; cursor:not-allowed; }
+
+.install-hint{
+  margin-top:10px; padding:8px 10px; border:1px dashed var(--border);
+  border-radius: 8px; background: var(--veil-1); color: var(--text-secondary);
+  font-size:.9rem; text-align:center;
+}
+.install-hint a{ color: var(--primary-light); font-weight:800; text-decoration:none; }
+.install-hint a:hover{ text-decoration:underline; }
+
+
+@media (max-width:420px){
+  :root{ --login-width: 92vw; }
+  .login-card{ padding:18px; border-radius:10px; }
+  .login-title h2{ font-size:1.35rem; }
+}
+
+
+.btn-primary:focus, input:focus{ outline-offset: 3px; }
+
+
+.login-title .ico{ transform: translateY(1px); }
+
+
